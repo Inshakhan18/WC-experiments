@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNook - Online Bookstore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #2d3748;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #63b3ed;
+        }
+        
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .hero p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+        
+        .book-cover {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .book-details {
+            padding: 1.2rem;
+        }
+        
+        .book-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+        
+        .book-author {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .book-price {
+            font-weight: 700;
+            color: #2b6cb0;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            background: #2b6cb0;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .buy-btn:hover {
+            background: #2c5282;
+        }
+        
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            nav a {
+                margin: 0 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">BookNook</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Fiction</a>
+            <a href="#">Non-Fiction</a>
+            <a href="#">Best Sellers</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>Discover Your Next Read</h1>
+            <p>Curated collection of books for every reader</p>
+        </section>
+        
+        <div class="books-grid">
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=400&fit=crop" alt="Book Cover" class="book-cover">
+                <div class="book-details">
+                    <h3 class="book-title">The Alchemist</h3>
+                    <p class="book-author">Paulo Coelho</p>
+                    <p class="book-price">$16.99</p>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=300&h=400&fit=crop" alt="Book Cover" class="book-cover">
+                <div class="book-details">
+                    <h3 class="book-title">Pride & Prejudice</h3>
+                    <p class="book-author">Jane Austen</p>
+                    <p class="book-price">$14.50</p>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=300&h=400&fit=crop" alt="Book Cover" class="book-cover">
+                <div class="book-details">
+                    <h3 class="book-title">Harry Potter</h3>
+                    <p class="book-author">J.K. Rowling</p>
+                    <p class="book-price">$22.99</p>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&h=400&fit=crop" alt="Book Cover" class="book-cover">
+                <div class="book-details">
+                    <h3 class="book-title">The Silent Patient</h3>
+                    <p class="book-author">Alex Michaelides</p>
+                    <p class="book-price">$18.25</p>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 BookNook. All rights reserved.</p>
+    </footer>
+</body>
+</html>
