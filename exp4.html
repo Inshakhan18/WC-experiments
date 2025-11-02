@@ -3,223 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookHub - Online Bookstore</title>
+    <title>Velvet Reads - Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
+        body {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .registration-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .registration-form {
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #581701;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        .btn-submit {
+            background: linear-gradient(to right, #600505, #8a0a0a);
             color: white;
-            padding: 100px 0;
+            font-weight: bold;
+            padding: 12px;
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
         }
-        .book-card {
-            transition: transform 0.3s;
-            height: 100%;
+        .btn-submit:hover {
+            background: linear-gradient(to right, #420319, #600505);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .book-card:hover {
-            transform: translateY(-5px);
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
         }
-        .book-img {
-            height: 300px;
-            object-fit: cover;
+        .form-control:focus {
+            border-color: #600505;
+            box-shadow: 0 0 0 0.25rem rgba(96, 5, 5, 0.25);
         }
-        .category-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+        .success-message {
+            color: #198754;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -10px;
+            margin-left: -10px;
+        }
+        .form-col {
+            padding-right: 10px;
+            padding-left: 10px;
+            flex: 1 0 0%;
+        }
+        .header-icon {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #600505;
+            font-size: 2.5rem;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .registration-form {
+                padding: 25px;
+            }
+            .form-col {
+                flex: 0 0 100%;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
-                <i class="bi bi-book-half me-2"></i>BookHub
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Categories</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Best Sellers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">New Releases</a></li>
-                </ul>
-                <div class="d-flex">
-                    <a href="#" class="btn btn-outline-light me-2">
-                        <i class="bi bi-cart3"></i> Cart
-                    </a>
-                    <a href="#" class="btn btn-primary">
-                        <i class="bi bi-person"></i> Login
-                    </a>
+    <div class="registration-container">
+        <div class="registration-form">
+            <div class="header-icon">📚</div>
+            <h2 class="form-title">Create Your Velvet Reads Account</h2>
+            <form id="regForm">
+                <div class="form-row">
+                    <!-- First Name -->
+                    <div class="form-col">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name*</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+                            <div class="error-message" id="firstNameError">First Name must contain only alphabets and at least 6 characters.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Last Name -->
+                    <div class="form-col">
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name*</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+                            <div class="error-message" id="lastNameError">Last Name cannot be empty.</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email*</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@domain.com">
+                    <div class="error-message" id="emailError">Please enter a valid email address (format: name@domain.com).</div>
+                </div>
+                
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password*</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                    <div class="error-message" id="passwordError">Password must be at least 6 characters long.</div>
+                </div>
+                
+                <!-- Mobile Number -->
+                <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number*</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="10-digit Mobile Number">
+                    <div class="error-message" id="mobileError">Mobile number must contain exactly 10 digits.</div>
+                </div>
+                
+                <!-- Address -->
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address*</label>
+                    <textarea class="form-control" id="address" rows="3" placeholder="Enter your Address"></textarea>
+                    <div class="error-message" id="addressError">Address cannot be empty.</div>
+                </div>
+                
+                <button type="submit" class="btn btn-submit w-100 mt-4">Register</button>
+                
+                <div class="form-footer">
+                    Already have an account? <a href="#" style="color: #600505; text-decoration: none;">Sign In</a>
+                </div>
+            </form>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-4">Discover Your Next Favorite Book</h1>
-            <p class="lead mb-4">Explore thousands of books across all genres</p>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Search books, authors...">
-                        <button class="btn btn-primary btn-lg">Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Books -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Featured Books</h2>
-            <div class="row g-4">
-                <!-- Book 1 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card book-card shadow-sm">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top book-img" alt="The Alchemist">
-                            <span class="badge bg-primary category-badge">Fiction</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">The Alchemist</h5>
-                            <p class="card-text text-muted">Paulo Coelho</p>
-                            <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 text-primary mb-0">$16.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 2 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card book-card shadow-sm">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top book-img" alt="Pride and Prejudice">
-                            <span class="badge bg-success category-badge">Classic</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Pride and Prejudice</h5>
-                            <p class="card-text text-muted">Jane Austen</p>
-                            <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 text-primary mb-0">$14.50</span>
-                                    <button class="btn btn-sm btn-outline-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 3 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card book-card shadow-sm">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top book-img" alt="Harry Potter">
-                            <span class="badge bg-warning category-badge">Fantasy</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Harry Potter</h5>
-                            <p class="card-text text-muted">J.K. Rowling</p>
-                            <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 text-primary mb-0">$22.99</span>
-                                    <button class="btn btn-sm btn-outline-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 4 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card book-card shadow-sm">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top book-img" alt="The Silent Patient">
-                            <span class="badge bg-danger category-badge">Mystery</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">The Silent Patient</h5>
-                            <p class="card-text text-muted">Alex Michaelides</p>
-                            <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="h5 text-primary mb-0">$18.25</span>
-                                    <button class="btn btn-sm btn-outline-primary">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <i class="bi bi-truck display-4 text-primary mb-3"></i>
-                    <h4>Free Shipping</h4>
-                    <p class="text-muted">Free delivery on orders over $25</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="bi bi-arrow-clockwise display-4 text-primary mb-3"></i>
-                    <h4>Easy Returns</h4>
-                    <p class="text-muted">30-day return policy</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="bi bi-shield-check display-4 text-primary mb-3"></i>
-                    <h4>Secure Payment</h4>
-                    <p class="text-muted">Your payment information is safe</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>BookHub</h5>
-                    <p>Your favorite online bookstore with the best collection of books.</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-light text-decoration-none">About Us</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Contact</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>Connect With Us</h5>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-light"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 BookHub. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get form element
+            const regForm = document.getElementById('regForm');
+            
+            // Add submit event listener
+            regForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset error messages and styling
+                resetValidation();
+                
+                // Validate all fields
+                const isFirstNameValid = validateFirstName();
+                const isLastNameValid = validateLastName();
+                const isEmailValid = validateEmail();
+                const isPasswordValid = validatePassword();
+                const isMobileValid = validateMobile();
+                const isAddressValid = validateAddress();
+                
+                // If all validations pass
+                if (isFirstNameValid && isLastNameValid && isEmailValid && 
+                    isPasswordValid && isMobileValid && isAddressValid) {
+                    alert("Registration Successful! Welcome to Velvet Reads!");
+                    // In a real application, you would submit the form here
+                    // regForm.submit();
+                }
+            });
+            
+            // Add real-time validation for better UX
+            document.getElementById('firstName').addEventListener('blur', validateFirstName);
+            document.getElementById('lastName').addEventListener('blur', validateLastName);
+            document.getElementById('email').addEventListener('blur', validateEmail);
+            document.getElementById('password').addEventListener('blur', validatePassword);
+            document.getElementById('mobile').addEventListener('blur', validateMobile);
+            document.getElementById('address').addEventListener('blur', validateAddress);
+            
+            // Function to reset validation styling and messages
+            function resetValidation() {
+                // Remove error styling from all inputs
+                document.querySelectorAll('.form-control').forEach(input => {
+                    input.classList.remove('is-invalid');
+                });
+                
+                // Hide all error messages
+                document.querySelectorAll('.error-message').forEach(error => {
+                    error.style.display = 'none';
+                });
+            }
+            
+            // First Name Validation
+            function validateFirstName() {
+                const firstName = document.getElementById('firstName').value.trim();
+                const firstNameError = document.getElementById('firstNameError');
+                
+                // Check if it contains only alphabets and has at least 6 characters
+                if (!/^[A-Za-z]{6,}$/.test(firstName)) {
+                    showError('firstName', firstNameError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Last Name Validation
+            function validateLastName() {
+                const lastName = document.getElementById('lastName').value.trim();
+                const lastNameError = document.getElementById('lastNameError');
+                
+                // Check if it's not empty
+                if (lastName === "") {
+                    showError('lastName', lastNameError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Email Validation
+            function validateEmail() {
+                const email = document.getElementById('email').value.trim();
+                const emailError = document.getElementById('emailError');
+                
+                // Standard email pattern validation
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+                if (!emailPattern.test(email)) {
+                    showError('email', emailError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Password Validation
+            function validatePassword() {
+                const password = document.getElementById('password').value;
+                const passwordError = document.getElementById('passwordError');
+                
+                // Check if password is at least 6 characters
+                if (password.length < 6) {
+                    showError('password', passwordError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Mobile Number Validation
+            function validateMobile() {
+                const mobile = document.getElementById('mobile').value.trim();
+                const mobileError = document.getElementById('mobileError');
+                
+                // Check if it contains exactly 10 digits
+                if (!/^\d{10}$/.test(mobile)) {
+                    showError('mobile', mobileError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Address Validation
+            function validateAddress() {
+                const address = document.getElementById('address').value.trim();
+                const addressError = document.getElementById('addressError');
+                
+                // Check if it's not empty
+                if (address === "") {
+                    showError('address', addressError);
+                    return false;
+                }
+                return true;
+            }
+            
+            // Helper function to show error
+            function showError(inputId, errorElement) {
+                document.getElementById(inputId).classList.add('is-invalid');
+                errorElement.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
+
